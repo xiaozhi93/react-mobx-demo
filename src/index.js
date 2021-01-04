@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
+import { Provider } from 'mobx-react'
+import apple from './stores/appleStore'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider apple={apple}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );

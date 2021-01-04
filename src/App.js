@@ -1,9 +1,9 @@
-import './App.css';
+import AppleBasket from './components/AppleBasket';
 
 function App() {
   return (
     <div className="App">
-      react working
+      <AppleBasket></AppleBasket>
     </div>
   );
 }
