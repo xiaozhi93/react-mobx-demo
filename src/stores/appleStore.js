@@ -1,4 +1,4 @@
-import { action, observable, computed, configure } from 'mobx'
+import { action, observable, computed, configure, runInAction } from 'mobx'
 
 configure( { enforceActions: 'observed'})
 class AppleStore {
@@ -41,26 +41,27 @@ class AppleStore {
       weight
     }
   }
-  @action.bound pickApple = () => {
+  @action.bound async pickApple() {
     if (this.isPicking) {
       return;
     }
     this.isPicking = true;
-    new Promise((resolve) => {
+    await new Promise((resolve) => {
       setTimeout(() => {
         resolve()
-       }, 2000)
-    }).then(() => {
+       }, 1500)
+    })
+    runInAction(() => {
       let weight = Math.floor(200 + Math.random() * 50);
       this.isPicking = false;
       this.apples.push({
           id: this.newAppleId++,
           weight: weight,
           isEaten: false
-      });
-    })   
+      });  
+    }) 
   }
-  @action.bound eatApple = (appleId) => {
+  @action.bound eatApple (appleId) {
     const target = this.apples.find(item => item.id === appleId)
     target.isEaten = true;
   }
