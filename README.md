@@ -16,5 +16,11 @@
           })
       )
    ```
+   
 2.  更新状态，状态也有改变但是组件没有更新
    mobx,mobx-react最新版本问题，将它们的版本改成旧版本
+
+## 部署
+
+[https://react-mobx-demo.vercel.app/](https://react-mobx-demo.vercel.app/)
+
